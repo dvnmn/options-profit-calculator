@@ -1,6 +1,6 @@
 # Options Profit Calcualtor
 ## Author: Devin Moon
-## Create: Oct. 2020
+## Created: Oct. 2020
 
 The application will allow users to calculate the potential profits and losses
 of various different options plays.
