@@ -4,7 +4,7 @@
 
 The application will allow users to calculate the potential profits and losses
 of various different options plays. <br>
-Uses: React as main framework.
+Uses React as main framework.
 
 **Features To Be Implemented**
 - Calculator for basic options
