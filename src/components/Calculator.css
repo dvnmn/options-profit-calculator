@@ -2,37 +2,38 @@
     height: 500px;
     width: 800px;
 
-    background-color: hsl(170, 16%, 85%);
+    background-color: hsl(0, 0%, 85%);
 
     display: inline-block; 
-
-    margin: 0;
-    padding-top: 0px;
 
     position: absolute;
     top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-
-    overflow: hidden;
 }
 
+/* Style for the input section on the left side of the calculator */
 .Input {
     width: 35%;
     height: 100%;
-
-    margin: 0;
-    padding-top: 1px;
-    padding-left: 10px;
     
-    background-color: red;
+    background-color: #cae8f7;
 
     float: left;
 }
 
+/* Style for the output section on the right side of the calculator */
 .Output {
     height: 100%;
-    margin-left: 35%;
-    background-color: blue;
+    width: 65%;
+
+    background-color: rgb(229, 253, 246);
+
+    float: right;
+}
+
+/* Wraps the content of both the input and output divs */
+.wrapper {
+    padding-left: 1em;
 }
