@@ -27,13 +27,14 @@
 .Output {
     height: 100%;
     width: 65%;
+    
+    float: right;
 
     background-color: rgb(229, 253, 246);
-
-    float: right;
 }
 
 .Output .wrapper {
+    margin-top: 1em;
     text-align: center;
 }
 

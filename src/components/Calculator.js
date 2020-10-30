@@ -59,21 +59,19 @@ function Output(props) {
    
     const chart = () => {
         setChartData({
-            labels: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
-            dataSets: [
-                {
-                    label: 'Title',
-                    data: [32, 45, 12, 76, 69],
-                    backgroundColor: [
-                        'rgba(75, 192, 192, 0.6)'
-                    ],
-                    borderWidth: 4
-                }
+            labels: ['1', '2', '3', '4', '5', '6'],
+            datasets: [
+              {
+                label: 'Label',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgba(255, 99, 132, 0.2)',
+              }
             ]
-        })
-    }
+        });
+    };
 
-    useEffect(() => {chart()}, [])
+    useEffect(() => {chart();}, []);
 
     return (
         <div class="Output">
