@@ -33,6 +33,10 @@
     float: right;
 }
 
+.Output .wrapper {
+    text-align: center;
+}
+
 /* Wraps the content of both the input and output divs */
 .wrapper {
     padding-left: 1em;

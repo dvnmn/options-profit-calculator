@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Line } from "react-chartjs-2";
 import "./Calculator.css";
 
 
@@ -39,7 +40,7 @@ function Input(props) {
                     onChange={(e) => setType(e.target.value)}
                 ></input>
                 
-                <button onClick = {() => props.createOutput(
+                <button onClick={() => props.createOutput(
                     <Output 
                         ticker={ticker} 
                         price={price}
@@ -54,18 +55,32 @@ function Input(props) {
 
 
 function Output(props) {
+    const [chartData, setChartData] = useState({});
+   
+    const chart = () => {
+        setChartData({
+            labels: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
+            dataSets: [
+                {
+                    label: 'Title',
+                    data: [32, 45, 12, 76, 69],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.6)'
+                    ],
+                    borderWidth: 4
+                }
+            ]
+        })
+    }
+
+    useEffect(() => {chart()}, [])
+
     return (
         <div class="Output">
             <div class="wrapper">
-                <p>
-                    Ticker: {props.ticker} <br/>
-                    Price: {props.price} <br/>
-                    Strike: {props.strike} <br/>
-                    Type: {props.type} <br/>
-                </p>
+                <Line data={chartData} />
             </div>
         </div>
-       
     );
 }
 
