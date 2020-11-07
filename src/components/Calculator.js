@@ -53,25 +53,36 @@ function Input(props) {
     );
 }
 
-
 function Output(props) {
     const [chartData, setChartData] = useState({});
    
     const chart = () => {
         setChartData({
-            labels: ['1', '2', '3', '4', '5', '6'],
+            labels: [
+                props.price - 3, 
+                props.price - 2,
+                props.price - 1,
+                props.price,
+                parseInt(props.price) + 1,
+                parseInt(props.price) + 2,
+                parseInt(props.price) + 3, 
+            ],
             datasets: [
               {
-                label: 'Label',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgba(255, 99, 132, 0.2)',
+                label: `${props.ticker} ${props.strike} ${props.type}`,
+                data: [-3, -3, -3, 0, 3, 6, 9],
+                borderColor: 'rgba(255, 99, 132, 100)',
+                fill: false,
+                borderJoinStyle: 'miter',
+                lineTension: 0
               }
             ]
         });
     };
 
-    useEffect(() => {chart();}, []);
+    useEffect(() => {
+        chart();
+    });
 
     return (
         <div class="Output">
@@ -81,7 +92,6 @@ function Output(props) {
         </div>
     );
 }
-
 
 function Calculator() {
     const [output, setOutput] = useState("");
