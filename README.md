@@ -1,4 +1,4 @@
-# Options Profit Calcualtor
+# Options Profit Calcualtor (IN PROGRESS)
 ## Author: Devin Moon
 ## Created: Oct. 2020
 
