@@ -1,23 +1,20 @@
 {
   "files": {
-    "main.css": "/options-profit-calculator/static/css/main.ab7136cd.chunk.css",
-    "main.js": "/options-profit-calculator/static/js/main.e1421461.chunk.js",
-    "main.js.map": "/options-profit-calculator/static/js/main.e1421461.chunk.js.map",
-    "runtime-main.js": "/options-profit-calculator/static/js/runtime-main.0124f785.js",
-    "runtime-main.js.map": "/options-profit-calculator/static/js/runtime-main.0124f785.js.map",
-    "static/js/2.d676fd27.chunk.js": "/options-profit-calculator/static/js/2.d676fd27.chunk.js",
-    "static/js/2.d676fd27.chunk.js.map": "/options-profit-calculator/static/js/2.d676fd27.chunk.js.map",
-    "static/js/3.3c9a32bd.chunk.js": "/options-profit-calculator/static/js/3.3c9a32bd.chunk.js",
-    "static/js/3.3c9a32bd.chunk.js.map": "/options-profit-calculator/static/js/3.3c9a32bd.chunk.js.map",
+    "main.css": "/options-profit-calculator/static/css/main.fe25d344.chunk.css",
+    "main.js": "/options-profit-calculator/static/js/main.46f64081.chunk.js",
+    "main.js.map": "/options-profit-calculator/static/js/main.46f64081.chunk.js.map",
+    "runtime-main.js": "/options-profit-calculator/static/js/runtime-main.b62c65af.js",
+    "runtime-main.js.map": "/options-profit-calculator/static/js/runtime-main.b62c65af.js.map",
+    "static/js/2.d9e1ec58.chunk.js": "/options-profit-calculator/static/js/2.d9e1ec58.chunk.js",
+    "static/js/2.d9e1ec58.chunk.js.map": "/options-profit-calculator/static/js/2.d9e1ec58.chunk.js.map",
     "index.html": "/options-profit-calculator/index.html",
-    "static/css/main.ab7136cd.chunk.css.map": "/options-profit-calculator/static/css/main.ab7136cd.chunk.css.map",
-    "static/js/2.d676fd27.chunk.js.LICENSE.txt": "/options-profit-calculator/static/js/2.d676fd27.chunk.js.LICENSE.txt",
-    "static/media/logo.103b5fa1.svg": "/options-profit-calculator/static/media/logo.103b5fa1.svg"
+    "static/css/main.fe25d344.chunk.css.map": "/options-profit-calculator/static/css/main.fe25d344.chunk.css.map",
+    "static/js/2.d9e1ec58.chunk.js.LICENSE.txt": "/options-profit-calculator/static/js/2.d9e1ec58.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.0124f785.js",
-    "static/js/2.d676fd27.chunk.js",
-    "static/css/main.ab7136cd.chunk.css",
-    "static/js/main.e1421461.chunk.js"
+    "static/js/runtime-main.b62c65af.js",
+    "static/js/2.d9e1ec58.chunk.js",
+    "static/css/main.fe25d344.chunk.css",
+    "static/js/main.46f64081.chunk.js"
   ]
 }
