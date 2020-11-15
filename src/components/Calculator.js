@@ -3,11 +3,16 @@ import { Line } from "react-chartjs-2";
 import "./Calculator.css";
 
 
+/**
+ * Componenet used to retrieve input from the user in the calculator.
+ * @param props 
+ */
 function Input(props) {
     const [ticker, setTicker] = useState("");
     const [price, setPrice] = useState("");
     const [strike, setStrike] = useState("");
     const [type, setType] = useState("");
+    const [optionsPrice, setOPrice] = useState("");
 
     return (
         <div class="Input">
@@ -39,6 +44,13 @@ function Input(props) {
                     value={type} 
                     onChange={(e) => setType(e.target.value)}
                 ></input>
+
+                <p>Option Price: </p>
+                <input 
+                    type="text"  
+                    value={optionsPrice} 
+                    onChange={(e) => setOPrice(e.target.value)}
+                ></input>
                 
                 <button onClick={() => props.createOutput(
                     <Output 
@@ -46,6 +58,7 @@ function Input(props) {
                         price={price}
                         strike={strike}
                         type={type}
+                        optionPrice={optionsPrice}
                     />)}
                 >Click me!</button>
             </div>
@@ -53,31 +66,53 @@ function Input(props) {
     );
 }
 
+/**
+ * Creates the table showing profit/losses on the given options play.
+ * @param props 
+ */
 function Output(props) {
     const [chartData, setChartData] = useState({});
    
     const chart = () => {
         setChartData({
-            labels: [
-                props.price - 3, 
-                props.price - 2,
-                props.price - 1,
-                props.price,
-                parseInt(props.price) + 1,
-                parseInt(props.price) + 2,
-                parseInt(props.price) + 3, 
-            ],
-            datasets: [
-              {
+            labels: calcKeyPrices(),
+            datasets: [{
                 label: `${props.ticker} ${props.strike} ${props.type}`,
-                data: [-3, -3, -3, 0, 3, 6, 9],
+                data: calcProfitLoss(calcKeyPrices()),
                 borderColor: 'rgba(255, 99, 132, 100)',
                 fill: false,
                 borderJoinStyle: 'miter',
                 lineTension: 0
-              }
-            ]
+            }]
         });
+    };
+    
+    const calcKeyPrices = () => {
+        var keyPrices = [];
+
+        keyPrices.push(props.strike - 4);
+        keyPrices.push(props.strike - 2);
+        keyPrices.push(props.strike);
+        keyPrices.push(parseInt(props.strike) + 2);
+        keyPrices.push(parseInt(props.strike) + 4);
+
+        return keyPrices;
+    };
+
+    const calcProfitLoss = (prices) => {
+        var profitLoss = [];
+
+        for (var i = 0; i < prices.length; i ++) {
+            if (prices[i] <= props.strike) {
+                let loss = 0 - parseFloat(props.optionPrice);
+                profitLoss.push(loss * 100);
+            } else{
+                let profit = prices[i] - props.strike - props.optionPrice;
+                profitLoss.push(profit * 100);
+            }
+        }
+
+        return profitLoss;
     };
 
     useEffect(() => {
@@ -93,6 +128,9 @@ function Output(props) {
     );
 }
 
+/**
+ * Creates the main calculator found in the middle of the application.
+ */
 function Calculator() {
     const [output, setOutput] = useState("");
    

@@ -3,6 +3,9 @@ import "./App.css"
 import Calculator from "./components/Calculator";
 
 
+/**
+ * Acts as the foundation for the application.
+ */
 function App() {
   return(
     <div className="App">
