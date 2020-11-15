@@ -9,4 +9,3 @@ Uses React as main framework.
 **Features To Be Implemented**
 - Calculator for basic options
 - Calculator for more advanced options plays
-- History to track the wins/losses of previous options plays.
