@@ -3,7 +3,7 @@
 ## Created: Oct. 2020
 
 The application will allow users to calculate the potential profits and losses
-of various different options plays. <br>
+of various different options plays at experiation. <br>
 Uses React as main framework.
 
 **Features To Be Implemented**
