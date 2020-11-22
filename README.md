@@ -3,9 +3,10 @@
 ## Created: Oct. 2020
 
 The application will allow users to calculate the potential profits and losses
-of various options plays at expiration. <br>
-Uses React as main framework. <br>
-Implements the Chart.js API to visualize the profit/losses on a line graph.
+of various options plays at expiration. 
+<br><br>
+- Uses React as the main framework. <br>
+- Implements the Chart.js API to visualize the profit/losses on a line graph.
 
 **Features To Be Implemented**
 - Calculator for basic options
