@@ -17,6 +17,7 @@ function Input(props) {
     return (
         <div class="Input">
             <div class="wrapper">
+                {/* Obtains ticker symbol from the user. */}
                 <p>Ticker: </p>
                 <input 
                     type="text" 
@@ -24,6 +25,7 @@ function Input(props) {
                     onChange={(e) => setTicker(e.target.value)}
                 ></input>
                 
+                {/* Obtains the price of the underlying from the user. */}
                 <p>Price: </p>
                 <input 
                     type="text"
@@ -31,6 +33,7 @@ function Input(props) {
                     onChange={(e) => setPrice(e.target.value)}
                 ></input>
                 
+                {/* Obtains the strike price of the option from the user. */}
                 <p>Strike: </p>
                 <input 
                     type="text"
@@ -38,6 +41,7 @@ function Input(props) {
                     onChange={(e) => setStrike(e.target.value)}
                 ></input>
             
+                 {/* Obtains the type of option from the user. */}
                 <p>Type: </p>
                 <input 
                     type="text"  
@@ -45,6 +49,7 @@ function Input(props) {
                     onChange={(e) => setType(e.target.value)}
                 ></input>
 
+                {/* Obtains the price of the option from the user. */}
                 <p>Option Price: </p>
                 <input 
                     type="text"  
@@ -52,6 +57,7 @@ function Input(props) {
                     onChange={(e) => setOPrice(e.target.value)}
                 ></input>
                 
+                {/* When button is pressed, the output graph is rendered. */}
                 <button onClick={() => props.createOutput(
                     <Output 
                         ticker={ticker} 
@@ -73,12 +79,13 @@ function Input(props) {
 function Output(props) {
     const [chartData, setChartData] = useState({});
    
+    //Renders the line graph showing the profit/loss of the given option play.
     const chart = () => {
         setChartData({
             labels: calcKeyPrices(),
             datasets: [{
                 label: `${props.ticker} ${props.strike} ${props.type}`,
-                data: calcProfitLoss(calcKeyPrices()),
+                data: calcProfitLoss(calcKeyPrices(), props.type),
                 borderColor: 'rgba(255, 99, 132, 100)',
                 fill: false,
                 borderJoinStyle: 'miter',
@@ -87,6 +94,7 @@ function Output(props) {
         });
     };
     
+    //Calculates the x-axis representing the price of the underlying stock.
     const calcKeyPrices = () => {
         var keyPrices = [];
 
@@ -99,13 +107,57 @@ function Output(props) {
         return keyPrices;
     };
 
-    const calcProfitLoss = (prices) => {
+    //Calculates the profit/loss values for the given option.
+    const calcProfitLoss = (prices, optionType) => {
+        switch(optionType) {
+            case "call": return calcCall(prices);
+            case "put": return calcPut(prices);
+        }
+    };
+
+    //Calculates the profit/losses of a put option.
+    const calcPut = (prices) => {
         var profitLoss = [];
 
-        for (var i = 0; i < prices.length; i ++) {
+        for (var i = 0; i < prices.length; i++) {
+            /**
+             * If the price of the underlying is less than the strike,
+             * profit or a lesser loss was made.
+             */
+            if (prices[i] <= props.strike) {
+                let profit = props.strike - prices[i] - props.optionPrice;
+                profitLoss.push(profit * 100);
+            
+            /**
+             * If the price of the underylying is greater than the strike,
+             * a full loss was made.
+             */
+            } else{
+                let loss = 0 - parseFloat(props.optionPrice);
+                profitLoss.push(loss * 100);
+            }
+        }
+
+        return profitLoss;
+    }
+
+    //Calculates the profit/losses of a call option.
+    const calcCall = (prices) => {
+        var profitLoss = [];
+
+        for (var i = 0; i < prices.length; i++) {
+            /**
+             * If the price of the underlying is greater than the strike,
+             * profit or a lesser loss was made.
+             */
             if (prices[i] <= props.strike) {
                 let loss = 0 - parseFloat(props.optionPrice);
                 profitLoss.push(loss * 100);
+           
+           /**
+             * If the price of the underylying is less than the strike,
+             * a full loss was made.
+             */
             } else{
                 let profit = prices[i] - props.strike - props.optionPrice;
                 profitLoss.push(profit * 100);
@@ -113,7 +165,7 @@ function Output(props) {
         }
 
         return profitLoss;
-    };
+    }
 
     useEffect(() => {
         chart();
