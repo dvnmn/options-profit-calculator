@@ -41,7 +41,7 @@ function Input(props) {
                     onChange={(e) => setStrike(e.target.value)}
                 ></input>
             
-                 {/* Obtains the type of option from the user. */}
+                {/* Obtains the type of option from the user. */}
                 <p>Type: </p>
                 <input 
                     type="text"  
