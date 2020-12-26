@@ -7,5 +7,5 @@ of various options plays at expiration. <br>
 - Implements the Chart.js module to visualize the profit/losses on a line graph.
 
 **Features To Be Implemented**
-- Calculator for basic options
-- Calculator for more advanced options plays
+- Calculator for more advanced options plays e.g. credit spreads and debit spread.
+- Table to show the change in profit/losses over time using the Black Scholes Model.
