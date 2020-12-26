@@ -34,7 +34,44 @@
     border-radius: 25px;
     background-color: white;
 
+    font-weight: bold;
     float: left;
+}
+
+.Input input {
+    height: 2em;
+    margin-top: 3.5em;
+    margin-left: 1em;
+  
+    border:none;
+    border-bottom: 1px solid #a0a0a0;
+
+    outline-width: 2px;
+    outline-color: rgb(29, 231, 197);
+}
+
+.Input button {
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: .75em;
+    color: rgb(255, 255, 255);
+
+    border: none;
+    border-radius: 25px;
+
+    display: block;
+    margin-top: 3.5em;
+    margin-left: 5em;
+    padding: 10px 15px 10px 15px;
+
+    background-color: rgb(29, 231, 197);
+    transition: .25s;
+
+    outline: none;
+}
+
+.Input button:hover {
+    background-color: rgb(23, 177, 151);
 }
 
 /* Style for the output section on the right side of the calculator */

@@ -18,41 +18,41 @@ function Input(props) {
         <div class="Input">
             <div class="wrapper">
                 {/* Obtains ticker symbol from the user. */}
-                <p>Ticker: </p>
                 <input 
-                    type="text" 
+                    type="text"
+                    placeholder="Ticker"
                     value={ticker} 
                     onChange={(e) => setTicker(e.target.value)}
                 ></input>
                 
                 {/* Obtains the price of the underlying from the user. */}
-                <p>Price: </p>
                 <input 
                     type="text"
+                    placeholder="Current price"
                     value={price} 
                     onChange={(e) => setPrice(e.target.value)}
                 ></input>
                 
                 {/* Obtains the strike price of the option from the user. */}
-                <p>Strike: </p>
                 <input 
                     type="text"
+                    placeholder="Strike price"
                     value={strike} 
                     onChange={(e) => setStrike(e.target.value)}
                 ></input>
             
                 {/* Obtains the type of option from the user. */}
-                <p>Type: </p>
                 <input 
                     type="text"  
+                    placeholder="Option type"
                     value={type} 
                     onChange={(e) => setType(e.target.value)}
                 ></input>
 
                 {/* Obtains the price of the option from the user. */}
-                <p>Option Price: </p>
                 <input 
-                    type="text"  
+                    type="text"
+                    placeholder="Option Price"
                     value={optionsPrice} 
                     onChange={(e) => setOPrice(e.target.value)}
                 ></input>
@@ -66,7 +66,7 @@ function Input(props) {
                         type={type}
                         optionPrice={optionsPrice}
                     />)}
-                >Click me!</button>
+                >Calculate</button>
             </div>
         </div>
     );
