@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/options-profit-calculator/static/css/main.fe25d344.chunk.css",
-    "main.js": "/options-profit-calculator/static/js/main.46f64081.chunk.js",
-    "main.js.map": "/options-profit-calculator/static/js/main.46f64081.chunk.js.map",
+    "main.css": "/options-profit-calculator/static/css/main.adbea5a9.chunk.css",
+    "main.js": "/options-profit-calculator/static/js/main.3fc6c128.chunk.js",
+    "main.js.map": "/options-profit-calculator/static/js/main.3fc6c128.chunk.js.map",
     "runtime-main.js": "/options-profit-calculator/static/js/runtime-main.b62c65af.js",
     "runtime-main.js.map": "/options-profit-calculator/static/js/runtime-main.b62c65af.js.map",
-    "static/js/2.d9e1ec58.chunk.js": "/options-profit-calculator/static/js/2.d9e1ec58.chunk.js",
-    "static/js/2.d9e1ec58.chunk.js.map": "/options-profit-calculator/static/js/2.d9e1ec58.chunk.js.map",
+    "static/js/2.f2bfa8f0.chunk.js": "/options-profit-calculator/static/js/2.f2bfa8f0.chunk.js",
+    "static/js/2.f2bfa8f0.chunk.js.map": "/options-profit-calculator/static/js/2.f2bfa8f0.chunk.js.map",
     "index.html": "/options-profit-calculator/index.html",
-    "static/css/main.fe25d344.chunk.css.map": "/options-profit-calculator/static/css/main.fe25d344.chunk.css.map",
-    "static/js/2.d9e1ec58.chunk.js.LICENSE.txt": "/options-profit-calculator/static/js/2.d9e1ec58.chunk.js.LICENSE.txt"
+    "static/css/main.adbea5a9.chunk.css.map": "/options-profit-calculator/static/css/main.adbea5a9.chunk.css.map",
+    "static/js/2.f2bfa8f0.chunk.js.LICENSE.txt": "/options-profit-calculator/static/js/2.f2bfa8f0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b62c65af.js",
-    "static/js/2.d9e1ec58.chunk.js",
-    "static/css/main.fe25d344.chunk.css",
-    "static/js/main.46f64081.chunk.js"
+    "static/js/2.f2bfa8f0.chunk.js",
+    "static/css/main.adbea5a9.chunk.css",
+    "static/js/main.3fc6c128.chunk.js"
   ]
 }
