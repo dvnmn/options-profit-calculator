@@ -5,7 +5,9 @@ import "./Calculator.css";
 
 /**
  * Componenet used to retrieve input from the user in the calculator.
- * @param props 
+ * 
+ * @param props
+ * @returns the left side of the calculator which takes input in from the user.
  */
 function Input(props) {
     const [ticker, setTicker] = useState("");
@@ -13,6 +15,47 @@ function Input(props) {
     const [strike, setStrike] = useState("");
     const [type, setType] = useState("");
     const [optionsPrice, setOPrice] = useState("");
+
+    /**
+     * Validates the user's input to make sure there are no errors.
+     * 
+     * @returns true if no errors are found; false otherwise.
+     */
+    const validate = () => {
+        let error = "";
+
+        if (/[^a-zA-Z]/.test(ticker)) {
+            error += "Invalid ticker.\n";
+            setTicker("");
+        }
+
+        if (/[^0-9.]/.test(price)) {
+            error += "Invalid price.\n";
+            setPrice("");
+        }
+
+        if (/[^0-9.]/.test(strike)) {
+            error += "Invalid strike.\n";
+            setStrike("");
+        }
+
+        if (/[^a-zA-Z]/.test(type)) {
+            error += "Invalid type.\n";
+            setType("");
+        }
+
+        if (/[^0-9.]/.test(optionsPrice)) {
+            error += "Invalid options price.\n";
+            setOPrice("");
+        }
+
+        if (error != "") {
+            alert(error);
+            return false;
+        }
+
+        return true;
+    };
 
     return (
         <div class="Input">
@@ -58,15 +101,19 @@ function Input(props) {
                 ></input>
                 
                 {/* When button is pressed, the output graph is rendered. */}
-                <button onClick={() => props.createOutput(
-                    <Output 
-                        ticker={ticker} 
-                        price={price}
-                        strike={strike}
-                        type={type}
-                        optionPrice={optionsPrice}
-                    />)}
-                >Calculate</button>
+                <button onClick={() => {
+                    if (validate()) {
+                        props.createOutput(
+                            <Output 
+                                ticker={ticker.toUpperCase()} 
+                                price={price}
+                                strike={strike}
+                                type={type}
+                                optionPrice={optionsPrice}
+                            />
+                        )
+                    }
+                }}>Calculate</button>           
             </div>
         </div>
     );
@@ -74,12 +121,17 @@ function Input(props) {
 
 /**
  * Creates the table showing profit/losses on the given options play.
- * @param props 
+ * 
+ * @param props
+ * @returns the right side of the calculator which displays a graph and other information 
+ * about the given option play.
  */
 function Output(props) {
     const [chartData, setChartData] = useState({});
    
-    //Renders the line graph showing the profit/loss of the given option play.
+    /**
+     * Renders the line graph showing the profit/losses of the given option play.
+     */
     const chart = () => {
         setChartData({
             labels: calcKeyPrices(),
@@ -94,7 +146,12 @@ function Output(props) {
         });
     };
     
-    //Calculates the x-axis representing the price of the underlying stock.
+    /**
+     * Calculates the x-axis representing the price of the underlying stock.
+     * 
+     * @returns an Array with the price points that will be displayed on the graph.
+     * It will always include the strike price of the option as the middle value.
+     */
     const calcKeyPrices = () => {
         var keyPrices = [];
 
@@ -106,16 +163,28 @@ function Output(props) {
 
         return keyPrices;
     };
-
-    //Calculates the profit/loss values for the given option.
+    
+    /**
+     * Calculates the profit/loss values for the given option play and returns
+     * an array with the profit/loss at the given price points.
+     * 
+     * @param {Array} prices 
+     * @param {String} optionType 
+     * @returns profit/loss values at the given price points.
+     */
     const calcProfitLoss = (prices, optionType) => {
-        switch(optionType) {
+        switch(optionType.toLowerCase()) {
             case "call": return calcCall(prices);
             case "put": return calcPut(prices);
         }
     };
 
-    //Calculates the profit/losses of a put option.
+    /**
+     * Calculates the profit/losses of a PUT option.
+     * 
+     * @param {Array} prices 
+     * @retursn profit/loss values at the given price points.
+     */
     const calcPut = (prices) => {
         var profitLoss = [];
 
@@ -141,7 +210,12 @@ function Output(props) {
         return profitLoss;
     }
 
-    //Calculates the profit/losses of a call option.
+    /**
+     * Calculates the profit/losses of a CALL options.
+     * 
+     * @param {Array} prices
+     * @returns profit/loss values at the given price points.
+     */
     const calcCall = (prices) => {
         var profitLoss = [];
 
@@ -182,6 +256,8 @@ function Output(props) {
 
 /**
  * Creates the main calculator found in the middle of the application.
+ * 
+ * @returns calculator component.
  */
 function Calculator() {
     const [output, setOutput] = useState("");
