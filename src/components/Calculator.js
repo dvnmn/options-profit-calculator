@@ -24,31 +24,37 @@ function Input(props) {
     const validate = () => {
         let error = "";
 
+        //Ticker test
         if (/[^a-zA-Z]/.test(ticker)) {
             error += "Invalid ticker.\n";
             setTicker("");
         }
 
+        //Price test
         if (/[^0-9.]/.test(price)) {
             error += "Invalid price.\n";
             setPrice("");
         }
 
+        //Strike test
         if (/[^0-9.]/.test(strike)) {
             error += "Invalid strike.\n";
             setStrike("");
         }
 
+        //Option type test
         if (/[^a-zA-Z]/.test(type)) {
             error += "Invalid type.\n";
             setType("");
         }
 
+        //Option price test
         if (/[^0-9.]/.test(optionsPrice)) {
             error += "Invalid options price.\n";
             setOPrice("");
         }
 
+        //If the error is not empty, alert the error/s and return false.
         if (error != "") {
             alert(error);
             return false;
