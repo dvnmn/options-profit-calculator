@@ -62,11 +62,6 @@ function Input(props) {
     };
 
     const getTickerPrice = () => {
-       var yahoo = require('yahoo-financial-data');
-      
-       yahoo.price('AAPL', function(err, data){
-           alert(data);
-       })
     }
 
     return (
@@ -114,7 +109,7 @@ function Input(props) {
                 {/* When button is pressed, the output graph is rendered. */}
                 <button onClick={() => {
                     if (validate()) {
-                        getTickerPrice();
+                        //getTickerPrice();
                         props.createOutput(
                             <Output 
                                 ticker={ticker.toUpperCase()} 
