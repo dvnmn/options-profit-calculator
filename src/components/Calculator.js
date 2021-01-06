@@ -42,12 +42,10 @@ function Input(props) {
             setStrike("");
         }
 
-        //Option type test
-        if (/[^a-zA-Z]/.test(type)) {
-            error += "Invalid type.\n";
+        if (type === "") {
+            error += "Please select an option type.\n";
             setType("");
         }
-
         //Option price test
         if (/[^0-9.]/.test(optionsPrice)) {
             error += "Invalid options price.\n";
@@ -62,6 +60,14 @@ function Input(props) {
 
         return true;
     };
+
+    const getTickerPrice = () => {
+       var yahoo = require('yahoo-financial-data');
+      
+       yahoo.price('AAPL', function(err, data){
+           alert(data);
+       })
+    }
 
     return (
         <div class="Input">
@@ -90,13 +96,12 @@ function Input(props) {
                     onChange={(e) => setStrike(e.target.value)}
                 ></input>
             
-                {/* Obtains the type of option from the user. */}
-                <input 
-                    type="text"  
-                    placeholder="Option type"
-                    value={type} 
-                    onChange={(e) => setType(e.target.value)}
-                ></input>
+                {/* Drop-down list with types of options the user can choose. */}
+                <select value={type} onChange={(e) => setType(e.target.value)}>
+                    <option value="" id="typeTitle" disabled selected>Choose an option type</option>
+                    <option value="Call">Call</option>
+                    <option value="Put">Put</option>
+                </select>
 
                 {/* Obtains the price of the option from the user. */}
                 <input 
@@ -109,6 +114,7 @@ function Input(props) {
                 {/* When button is pressed, the output graph is rendered. */}
                 <button onClick={() => {
                     if (validate()) {
+                        getTickerPrice();
                         props.createOutput(
                             <Output 
                                 ticker={ticker.toUpperCase()} 

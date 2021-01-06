@@ -45,7 +45,21 @@
     margin-top: 3.5em;
     margin-left: 1em;
   
-    border:none;
+    border: none;
+    border-bottom: 1px solid #a0a0a0;
+
+    outline-width: 2px;
+    outline-color: rgb(29, 231, 197);
+}
+
+.Input select {
+    height: 2em;
+    width: 13em;
+
+    margin-top: 3.5em;
+    margin-left: 1em;
+
+    border: none;
     border-bottom: 1px solid #a0a0a0;
 
     outline-width: 2px;
@@ -71,7 +85,6 @@
 
     outline: none;
 }
-
 .Input button:hover {
     background-color: rgb(23, 177, 151);
 }
