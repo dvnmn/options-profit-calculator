@@ -4,7 +4,8 @@
 The application will allow users to calculate the potential profits and losses
 of various options plays at expiration. <br>
 - Uses React as the main framework. <br>
-- Implements the Chart.js module to visualize the profit/losses on a line graph.
+- Implements the Chart.js npm module to visualize the profit/losses on a line graph.
+- Acquires realtime stock pricing using Financial Modeling Prep's API.
 
 **Features To Be Implemented**
 - Calculator for more advanced options plays e.g. credit spreads and debit spread.
