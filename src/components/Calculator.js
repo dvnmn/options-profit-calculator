@@ -24,20 +24,8 @@ function Input(props) {
     const validate = () => {
         let error = "";
 
-        //Ticker test
-        if (/[^a-zA-Z]/.test(ticker)) {
-            error += "Invalid ticker.\n";
-            setTicker("");
-        }
-
-        //Price test
-        if (/[^0-9.]/.test(price)) {
-            error += "Invalid price.\n";
-            setPrice("");
-        }
-
         //Strike test
-        if (/[^0-9.]/.test(strike)) {
+        if (/[^0-9.]/.test(strike) || strike === "") {
             error += "Invalid strike.\n";
             setStrike("");
         }
@@ -47,13 +35,13 @@ function Input(props) {
             setType("");
         }
         //Option price test
-        if (/[^0-9.]/.test(optionsPrice)) {
+        if (/[^0-9.]/.test(optionsPrice) || optionsPrice === "") {
             error += "Invalid options price.\n";
             setOPrice("");
         }
 
         //If the error is not empty, alert the error/s and return false.
-        if (error != "") {
+        if (error !== "") {
             alert(error);
             return false;
         }
@@ -61,7 +49,53 @@ function Input(props) {
         return true;
     };
 
+    /**
+     * Grabs the current price of the given ticker using Finacial Modeling Prep's
+     * realtime stock data API.
+     */
     const getTickerPrice = () => {
+        var numbers = 'demo';
+
+        getRequest(
+            'https://financialmodelingprep.com/api/v3/quote-short/'
+            + ticker + '?apikey=' + numbers,
+           
+            (responseText) => {
+                let resp = JSON.parse(responseText);
+
+                try {
+                    setPrice(resp[0].price);
+                } catch (e) {
+                    alert("Invalid ticker.");
+                }
+            }
+        );
+
+        function getRequest(url, success) {
+            var req = false;
+            
+            try {
+                req = new XMLHttpRequest();
+            } catch (e) {
+                return false;
+            }
+
+            if (!req) return false;
+            if (typeof success != 'function') success = function() {};
+            
+            req.onreadystatechange = () => {
+                if (req.readyState == 4) {
+                    if (req.status === 200) {
+                        success(req.responseText)
+                    }
+                }
+            }
+        
+            req.open("GET", url, true);
+            req.send(null);
+            
+            return req;
+        }
     }
 
     return (
@@ -73,6 +107,7 @@ function Input(props) {
                     placeholder="Ticker"
                     value={ticker} 
                     onChange={(e) => setTicker(e.target.value)}
+                    onBlur={() => getTickerPrice()}
                 ></input>
                 
                 {/* Obtains the price of the underlying from the user. */}
@@ -80,7 +115,7 @@ function Input(props) {
                     type="text"
                     placeholder="Current price"
                     value={price} 
-                    onChange={(e) => setPrice(e.target.value)}
+                    readOnly
                 ></input>
                 
                 {/* Obtains the strike price of the option from the user. */}
@@ -109,7 +144,6 @@ function Input(props) {
                 {/* When button is pressed, the output graph is rendered. */}
                 <button onClick={() => {
                     if (validate()) {
-                        //getTickerPrice();
                         props.createOutput(
                             <Output 
                                 ticker={ticker.toUpperCase()} 
