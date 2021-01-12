@@ -1,6 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
+
+/* Style for the calculator. */
 .Calculator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.calc-main {
     font-family: 'Montserrat';
     height: 500px;
     width: 800px;
@@ -19,11 +29,35 @@
 
     display: flex; 
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    
+}
+
+.calc-navbar {
+    margin-left: 25px;
+}
+
+.calc-navbar button {
+    height: 2.5em;
+    width: 100px;
+
+    background: none;
+    color: rgb(255, 255, 255);
+    
+    border: none;
+    border-radius: 10px 10px 0px 0px;
+    outline: none;
+
+    transition: .25s;
+}
+
+.calc-navbar button:hover {
+    background-color: rgb(231, 231, 231);
+    color: black;
+}
+
+.calc-navbar .selected {
+    background-color: rgb(231, 231, 231);
+    color: black;
 }
 
 /* Style for the input section on the left side of the calculator */
@@ -66,7 +100,7 @@
     outline-color: rgb(29, 231, 197);
 }
 
-.Input button {
+.wrapper button {
     font-family: Montserrat;
     font-weight: bold;
     font-size: .75em;
@@ -85,7 +119,8 @@
 
     outline: none;
 }
-.Input button:hover {
+
+.wrapper button:hover {
     background-color: rgb(23, 177, 151);
 }
 

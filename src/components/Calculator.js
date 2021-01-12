@@ -56,6 +56,7 @@ function Input(props) {
     const getTickerPrice = () => {
         var numbers = 'demo';
 
+        //Requests the ticker's price from Financial Modeling Prep's API
         getRequest(
             'https://financialmodelingprep.com/api/v3/quote-short/'
             + ticker + '?apikey=' + numbers,
@@ -63,6 +64,10 @@ function Input(props) {
             (responseText) => {
                 let resp = JSON.parse(responseText);
 
+                /**
+                 * Attemps to acquire the price value from the JSON resp.
+                 * If an error is thrown, alerts the user that the given ticker is invalid.
+                 */
                 try {
                     setPrice(resp[0].price);
                 } catch (e) {
@@ -302,12 +307,33 @@ function Output(props) {
  */
 function Calculator() {
     const [output, setOutput] = useState("");
-   
+    const [basicSelected, setBasicSelection] = useState("selected");
+    const [spreadsSelected, setSpreadSelection] = useState("");
+
     return (
-      <div className="Calculator">
-          <Input createOutput={setOutput} />
-          {output}
-      </div>
+        <div class="Calculator">
+            <div class="calc-navbar">
+                <button 
+                    class={basicSelected}
+                    onClick={() => {
+                        setBasicSelection("selected");
+                        setSpreadSelection("");
+                    }}
+                >Basic</button>
+                <button 
+                    class={spreadsSelected}
+                    onClick={() => {
+                        setBasicSelection("");
+                        setSpreadSelection("selected");
+                    }}
+                >Spreads</button>
+            </div>
+
+            <div class="calc-main">
+                <Input createOutput={setOutput} />
+                {output}
+            </div>
+        </div>
     );
 }
 
